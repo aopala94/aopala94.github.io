@@ -1,0 +1,29 @@
+{
+    work_1:
+    {
+        name: 'Touch',
+        desc: `"Touch" Conceptualized by Niharika Senapati and Pippa Samaya is a short dance film capturing idea of trauma, touch and tenderness through movement. This work is produced by Pickle Factory and Asia-Arts as part of an Art Residency sharing.`
+    },
+    work_2:
+    {
+        name: 'Into the Daydreaming',
+        desc: `The performance incorporates music and dance, as well as dreamlike lighting in strong hues and is purposefully created where parents and child can be at ease and yet, trigger a baby’s sensorial and kinesthetic senses at the same time. Interlacing contemporary dance, music and visual arts within an immersive, installation-based environment, Into the Daydreaming is a sensorially saturated experience and proposes an exceptional encounter with the arts. This new-age performance has been conceptualized and directed by DALIJA ACIN THELANDER, one of the leading choreographers from Sweden.`
+    },
+    work_3:
+    {
+        name: 'An Act of Resistance',
+        desc: `"An Act of Resistance" is a site specific, interactive performance art piece where the performer urges every one to create a minimal "Act" of resistance.
+This work was first performed at Kolkata International Performance Art Festival 2017.`
+    },
+    work_4:
+    {
+        name: 'Choukath',
+        desc: `"Choukath/Threshold" is Playback Project from Satyajit Ray Film and Television Institute directed by Moinak Biswas.
+This work is a mix of Music, Contemporary Dance and Fictional Visual about a forbidden land which is incidentally one of the most intensely militarized zone in the world having one armed force for every 15 citizen.`
+    },
+    work_5:
+    {
+        name: 'Khyapa',
+        desc: `Khyapa/Pariah directed by Riddhi Majumder. Pariah won the best film award at KAZCHA - NIV Independent Film Festival. Picture by Abhirup Halder.`
+    }
+}
