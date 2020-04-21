@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<head>
+    <title>Aopala Banerjee</title>
+
+    <meta charset="UTF-8">
+
+    <!-- BOOTSTRAP & JQUERY -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <style>
+        #titleBarText {
+            height: 20vh;
+            font-size: 10vh;
+        }
+        .carousel .carousel-item {
+            transition-duration: 2s;
+        }
+    </style>
+    <script id='contents' src='contents' type='application/json'></script>
+    <script type='text/javascript'>
+        let tabs = ['Home', 'About', 'Works', 'Contact'];
+        let switchToTab = tab => {
+            console.log(tab);
+        }
+        let populateTabs = () => {
+            let root = document.getElementById('tabs_panel'), len = tabs.length, home = true;
+            for(let tabName of tabs) {
+                let tab_btn = document.createElement('li');
+                tab_btn.className = 'nav-item';
+                if(home) {
+                    tab_btn.className += ' active';
+                    home = false;
+                }
+                tab_btn.id = tabName.toLowerCase();
+                tab_btn.addEventListener('click', function() {
+                    switchToTab(tab_btn.id);
+                });
+                let a = document.createElement('a');
+                a.className = 'nav-link';
+                a.innerHTML = tabName;
+                tab_btn.appendChild(a);
+                root.appendChild(tab_btn);
+            }
+            getJSON();
+        }
+        let getJSON = () => {
+            let request = new XMLHttpRequest(), json = '';
+			request.onreadystatechange = () => {
+                if(request.readyState == 4 && request.status == 200 && request.response.length != 0)
+                    populateCards(request.responseText);
+            };
+            request.open('GET','contents.json',true);
+            request.send();
+            
+        }
+        let populateCards = text => {
+            json = JSON.parse(text);
+            let len = Object.keys(json).length;
+            for(let i = 0; i < len; i++) {
+                let work = json['work_' + (i + 1)];
+                let name = work.name;
+                let desc = work.desc;
+                let card = document.createElement('div');
+                card.className = '';
+                let pic = document.createElement('div');
+                pic.id = work + '_pic';
+                pic.className = '';
+                let text = document.createElement('div');
+                text.id = work + '_text';
+                text.className = '';
+                text.innerHTML = '<h2 id=\'h\'>' + name + '</h2><br><p>' + desc + '</p>';
+                if(i%2 == 0) {
+                    card.className += 'card_left';
+                    card.appendChild(pic);
+                    card.appendChild(text);
+                } else {
+                    card.className += 'card_right';
+                    card.appendChild(text);
+                    card.appendChild(pic);
+                }
+                document.getElementById('cards_section').appendChild(card);
+            }
+        }
+        window.addEventListener('load', populateTabs);
+        window.onload = () => {
+            window.addEventListener('wheel', event => {
+                if(event.deltaY > 0) {
+                    $('#titleBar').collapse('hide');
+                }
+                else if($(window).scrollTop() == 0) {
+                    $('#titleBar').collapse('show');
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="accordion">
+        <div class="card">
+          <div id="titleBar" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+              <h1 id='titleBarText'>Aopala Banerjee</h1>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <nav class='navbar navbar-expand-sm sticky-top bg-light navbar-light justify-content-center'>
+        <ul id='tabs_panel' class='navbar-nav'>
+
+        </ul>
+
+    </nav>
+
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style='width: 60vw; margin: auto' data-interval='3000'>
+        <ol class="carousel-indicators">
+            <li data-target='#carouselExampleIndicators' data-slide-to='0' class='active'></li>
+            <li data-target='#carouselExampleIndicators' data-slide-to='1'></li>
+            <li data-target='#carouselExampleIndicators' data-slide-to='2'></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="d-block w-100" src='images/image_1.jpg'>
+                <div class="carousel-caption">
+                    <h3>Caption</h3>
+                    <p>Information</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src='images/image_2.jpg'">
+                <div class="carousel-caption">
+                    <h3>Caption</h3>
+                    <p>Information</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="d-block w-100" src='images/image_3.jpg'>
+                <div class="carousel-caption">
+                    <h3>Caption</h3>
+                    <p>Information</p>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+    <div id='cards_section'>
+        
+    </div>
+</body>
