@@ -1,33 +1,46 @@
 {
-    "work_1":
+    "name": "Aopala Banerjee",
+    "tagline": "A Happy Enabler and A Bit of Everything",
+    "summary": "A dancer by training, life’s gentle progress shifted my interest towards Performance Arts & Films, at an early age of 16. At the International Art Caravan, initiated by Inder Salim, I presented my first collaborative Performance Art Piece. Life’s leaf turning to High School and College, my will towards Performance Art grew. I’ve since worked in many a spontaneous and collaborative project, becoming a part of the Performance Art movement in Kolkata with Performers Independent. A short break later, my work as a dancer/performer has taken new forms, having been privileged enough to be part of Artistic Platforms like Think Arts, Pickle Factory and Dung Beetle Films.",
+    "work":
     {
-        "name": "Touch",
-        "desc": "\"Touch\" Conceptualized by Niharika Senapati and Pippa Samaya is a short dance film capturing idea of trauma, touch and tenderness through movement. This work is produced by Pickle Factory and Asia-Arts as part of an Art Residency sharing.",
-        "image": "images/work_image_1.jpg"
-    },
-    "work_2":
-    {
-        "name": "Into the Daydreaming",
-        "desc": "The performance incorporates music and dance, as well as dreamlike lighting in strong hues and is purposefully created where parents and child can be at ease and yet, trigger a baby’s sensorial and kinesthetic senses at the same time. Interlacing contemporary dance, music and visual arts within an immersive, installation-based environment, Into the Daydreaming is a sensorially saturated experience and proposes an exceptional encounter with the arts. This new-age performance has been conceptualized and directed by DALIJA ACIN THELANDER, one of the leading choreographers from Sweden.",
-        "image": "images/work_image_2.jpg"
+        "work_1":
+        {
+            "name": "Touch",
+            "desc": "\"Touch\" Conceptualized by Niharika Senapati and Pippa Samaya is a short dance film capturing idea of trauma, touch and tenderness through movement. This work is produced by Pickle Factory and Asia-Arts as part of an Art Residency sharing.",
+            "image": "images/work_image_1.jpg"
+        },
+        "work_2":
+        {
+            "name": "Into the Daydreaming",
+            "desc": "The performance incorporates music and dance, as well as dreamlike lighting in strong hues and is purposefully created where parents and child can be at ease and yet, trigger a baby’s sensorial and kinesthetic senses at the same time. Interlacing contemporary dance, music and visual arts within an immersive, installation-based environment, Into the Daydreaming is a sensorially saturated experience and proposes an exceptional encounter with the arts. This new-age performance has been conceptualized and directed by DALIJA ACIN THELANDER, one of the leading choreographers from Sweden.",
+            "image": "images/work_image_2.jpg"
 
+        },
+        "work_3":
+        {
+            "name": "An Act of Resistance",
+            "desc": "\"An Act of Resistance\" is a site specific, interactive performance art piece where the performer urges every one to create a minimal \"Act\" of resistance.\nThis work was first performed at Kolkata International Performance Art Festival 2017.",
+            "image": "images/work_image_3.jpg"
+        },
+        "work_4":
+        {
+            "name": "Choukath",
+            "desc": "\"Choukath/Threshold\" is Playback Project from Satyajit Ray Film and Television Institute directed by Moinak Biswas.\nThis work is a mix of Music, Contemporary Dance and Fictional Visual about a forbidden land which is incidentally one of the most intensely militarized zone in the world having one armed force for every 15 citizen.",
+            "image": "images/work_image_4.jpg"
+        },
+        "work_5":
+        {
+            "name": "Khyapa",
+            "desc": "Khyapa/Pariah directed by Riddhi Majumder. Pariah won the best film award at KAZCHA - NIV Independent Film Festival. Picture by Abhirup Halder.",
+            "image": "images/work_image_5.jpg"
+        }
     },
-    "work_3":
+    "contact":
     {
-        "name": "An Act of Resistance",
-        "desc": "\"An Act of Resistance\" is a site specific, interactive performance art piece where the performer urges every one to create a minimal \"Act\" of resistance.\nThis work was first performed at Kolkata International Performance Art Festival 2017.",
-        "image": "images/work_image_3.jpg"
-    },
-    "work_4":
-    {
-        "name": "Choukath",
-        "desc": "\"Choukath/Threshold\" is Playback Project from Satyajit Ray Film and Television Institute directed by Moinak Biswas.\nThis work is a mix of Music, Contemporary Dance and Fictional Visual about a forbidden land which is incidentally one of the most intensely militarized zone in the world having one armed force for every 15 citizen.",
-        "image": "images/work_image_4.jpg"
-    },
-    "work_5":
-    {
-        "name": "Khyapa",
-        "desc": "Khyapa/Pariah directed by Riddhi Majumder. Pariah won the best film award at KAZCHA - NIV Independent Film Festival. Picture by Abhirup Halder.",
-        "image": "images/work_image_5.jpg"
+        "email": "aopala94@gmail.com",
+        "phone": "+91 98745 64619",
+        "facebook": "https://www.facebook.com/aopala.banerjee/",
+        "instagram": "https://www.instagram.com/aopalabanerjee/"
     }
 }

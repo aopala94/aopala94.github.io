@@ -10,11 +10,59 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+    <!-- FONT AWESOME-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <!-- CUSTOM CSS -->
     <style>
+        @keyframes leftin {
+            from {
+                transform: translateX(-100vw)scaleX(0);
+                -webkit-transform: translateX(-100vw)scaleX(0);
+                -ms-transform: translateX(-100vw)scaleX(0);
+                -o-transform: translateX(-100vw)scaleX(0);
+            }
+
+            to {
+                transform: translateX(0)scaleX(1);
+                -webkit-transform: translateX(0)scaleX(1);
+                -ms-transform: translateX(0)scaleX(1);
+                -o-transform: translateX(0)scaleX(1);
+            }
+        }
+        @keyframes rightin {
+            from {
+                transform: translateX(100vw)scaleX(0);
+                -webkit-transform: translateX(100vw)scaleX(0);
+                -ms-transform: translateX(100vw)scaleX(0);
+                -o-transform: translateX(100vw)scaleX(0);
+            }
+
+            to {
+                transform: translateX(0)scaleX(1);
+                -webkit-transform: translateX(0)scaleX(1);
+                -ms-transform: translateX(0)scaleX(1);
+                -o-transform: translateX(0)scaleX(1);
+            }
+        }
+        .header_bar {
+            background: url('images/header_image');
+            background-repeat: no-repeat;
+            background-size: cover;
+            color: white;
+            height: 60vh;
+            opacity: 0.9;
+        }
         #titleBarText {
             height: 20vh;
             font-size: 10vh;
+            text-align: right;
+            padding-right: 10vw;
+        }
+        #titleBarDesc {
+            font-size: 2.5vh;
+            padding-right: 10.1vw;
+            text-align: right;
         }
         .carousel .carousel-item {
             transition-duration: 2s;
@@ -22,46 +70,77 @@
         #cards_section {
             width: 80vw;
             margin: auto;
+            padding-bottom: 10vh;
         }
         .work_pic {
-            /* max-width: 20vw!important; */
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
         .work_banner {
             padding-top: 5vh;
-            pointer-events: 5vh;
         }
+        .work_card_h {
+            background: black;
+            color: white;
+            padding-right: 1vw;
+            padding-left: 1vw;
+            padding-top: 0.5vh;
+            padding-bottom: 0.5vh;
+        }
+        #summary_text {
+            width: 90vw;
+            margin: auto;
+            text-align: justify;
+        }
+        #contact_panel {
+            width: 80vw;
+            margin: auto;
         
+        }
+        .click_me:hover {
+            cursor: pointer;
+        }
+        .card_left_animate {
+            animation-name: leftin;
+            animation-duration: 1.5s;
+        }
+        .card_right_animate {
+            animation-name: rightin;
+            animation-duration: 1.5s;
+        }
     </style>
     <script id='contents' src='contents' type='application/json'></script>
     <script type='text/javascript'>
         let tabs = ['Home', 'About', 'Works', 'Contact'];
+        let links = ['accordion', 'about', 'works', 'contact_panel'];
+
         let switchToTab = tab => {
-            console.log(tab);
+            document.getElementById(tab).scrollIntoView({behavior: 'smooth', block: 'start', inline: 'start'});
+            
         }
+        
         let populateTabs = () => {
-            let root = document.getElementById('tabs_panel'), len = tabs.length, home = true;
+            let root = document.getElementById('tabs_panel'), len = tabs.length, home = true, i = 0;
             for(let tabName of tabs) {
                 let tab_btn = document.createElement('li');
                 tab_btn.className = 'nav-item';
+                let a = document.createElement('div');
+                a.className = 'nav-link click_me';
+                a.innerHTML = tabName;
+                a.setAttribute('href', '#' + links[i]);
+                a.setAttribute('onclick', 'switchToTab(\'' + links[i] + '\')');
                 if(home) {
-                    tab_btn.className += ' active';
+                    a.className += ' active';
                     home = false;
                 }
-                tab_btn.id = tabName.toLowerCase();
-                tab_btn.addEventListener('click', function() {
-                    switchToTab(tab_btn.id);
-                });
-                let a = document.createElement('a');
-                a.className = 'nav-link';
-                a.innerHTML = tabName;
                 tab_btn.appendChild(a);
                 root.appendChild(tab_btn);
+                i++;
             }
             getJSON();
         }
+        
         let getJSON = () => {
             let request = new XMLHttpRequest(), json = '';
 			request.onreadystatechange = () => {
@@ -72,15 +151,80 @@
             request.send();
             
         }
+
+        let populateContactBar = contact => {
+            let cPanel = document.getElementById('contact_panel'), con_btn, a;
+
+            cPanel.innerHTML = '';
+            
+            // E-MAIL
+
+            con_btn = document.createElement('li');
+            con_btn.className = 'nav-item';
+            a = document.createElement('a');
+            a.className = 'nav-link click_me';
+            a.innerHTML = '<i class="fa fa-envelope" aria-hidden="true"></i>\t' + contact.email;
+            a.href = 'mailto:' + contact.email;
+            con_btn.appendChild(a);
+            cPanel.appendChild(con_btn);
+            
+            // TELEPHONE NUMBER
+
+            con_btn = document.createElement('li');
+            con_btn.className = 'nav-item';
+            a = document.createElement('a');
+            a.className = 'nav-link click_me';
+            a.innerHTML = contact.phone;
+            a.href = 'tel:' + contact.phone;
+            con_btn.appendChild(a);
+            cPanel.appendChild(con_btn);
+
+            cPanel = document.getElementById('social_panel');
+            cPanel.innerHTML = '';
+
+            
+            // FACEBOOK
+
+            con_btn = document.createElement('div');
+            con_btn.className = 'nav-item';
+            a = document.createElement('a');
+            a.className = 'nav-link click_me fa fa-facebook pull-right';
+            a.href = contact.facebook;
+            con_btn.appendChild(a);
+            cPanel.appendChild(con_btn);
+            
+            // INSTAGRAM
+
+            con_btn = document.createElement('div');
+            con_btn.className = 'nav-item';
+            a = document.createElement('a');
+            a.className = 'nav-link click_me fa fa-instagram pull-right';
+            a.href = contact.instagram;
+            con_btn.appendChild(a);
+            cPanel.appendChild(con_btn);
+
+        }
+        
+        let populateRest = json => {
+            $('#titleBarText').html(json.name.toUpperCase());
+            $('#titleBarDesc').html(json.tagline);
+            $('#summary_text').html(json.summary);
+
+            populateContactBar(json.contact);
+        }
+        
         let populateCards = text => {
             document.getElementById('cards_section').innerHTML = '';
             let width = screen.width;
             let height = screen.height;
             aspect_ratio = width/height;
             json = JSON.parse(text);
-            let len = Object.keys(json).length;
+
+            populateRest(json);
+
+            let len = Object.keys(json.work).length;
             for(let i = 0; i < len; i++) {
-                let work = json['work_' + (i + 1)]; //  extract work dataset
+                let work = json.work['work_' + (i + 1)]; //  extract work dataset
                 let name = work.name;               //  work name
                 let desc = work.desc;               //  description of work
 
@@ -94,9 +238,13 @@
 
                 let text = document.createElement('div');   //  text container
                 text.className = aspect_ratio < lim? 'w-100' :'col-8';
-                text.innerHTML = '<h2 id=\'work_card_h\'>' + name + '</h2><br><p>' + desc + '</p>';
+                text.innerHTML = '<h2 class=\'work_card_h\'>' + name + '</h2><br><p>' + desc + '</p>';
                 if(i%2 == 0) {
                     card.className += ' card_left';
+                    card.appendChild(pic);
+                    card.appendChild(text);
+                } else if(aspect_ratio < lim) {
+                    card.className += ' card_right';
                     card.appendChild(pic);
                     card.appendChild(text);
                 } else {
@@ -105,45 +253,75 @@
                     card.appendChild(pic);
                 }
                 document.getElementById('cards_section').appendChild(card);
+                
             }
         }
+
+        let animateVisible = () => {
+            let wb = document.getElementsByClassName('work_banner'), ban, i = wb.length;
+            for( ban of wb) {
+                if(ban.classList.contains('animation_done')) {
+                    i--;
+                    continue;
+                }
+                let box = ban.getBoundingClientRect();
+                if(box.y < 0.95 * window.innerHeight) {
+                    if(ban.classList.contains('card_left')) {
+                        ban.classList.add('card_left_animate');
+                        ban.classList.add('animation_done');
+                    } else {
+                        ban.classList.add('card_right_animate');
+                        ban.classList.add('animation_done');
+                    }
+                }
+            }
+            if(!i){
+                window.removeEventListener('scroll', animateVisible);
+            }
+        }
+        
         window.addEventListener('load', populateTabs);
         window.onload = () => {
-            toggleCol = event => {
-                if(event.deltaY > 0) {
-                    $('#titleBar').collapse('hide');
-                }
-                else if($(window).scrollTop() == 0) {
-                    $('#titleBar').collapse('show');
-                }
-            };
-            window.addEventListener('wheel', toggleCol);
-            window.addEventListener('touchmove', toggleCol);
+            // toggleCol = event => {
+            //     if(event.deltaY > 0) {
+            //         $('#titleBar').collapse('hide');
+            //     }
+            //     else if($(window).scrollTop() == 0) {
+            //         $('#titleBar').collapse('show');
+            //     }
+            // }
+            // window.addEventListener('wheel', toggleCol);
+            // window.addEventListener('touchmove', toggleCol);
             window.addEventListener('resize', getJSON);
+            window.addEventListener('scroll', animateVisible);
         }
     </script>
 </head>
-<body>
+<body  data-spy="scroll" data-target='#global_nav'>
+
     <div id="accordion">
-        <div class="card">
-          <div id="titleBar" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-              <h1 id='titleBarText'>Aopala Banerjee</h1>
-              <p id='titleBarDesc'>A Happy Enabler and A Bit of Everything</p>
-            </div>
+        <div class="card header_bar">
+          <div class="collapse show"  data-parent="#accordion">
+            <div class="card-body" id='titleBarText'></div>
+          </div>
+          <div class="collapse show"  data-parent="#accordion">
+            <div class="card-body" id='titleBarDesc'></div>
           </div>
         </div>
     </div>
 
-    <nav class='navbar navbar-expand-sm sticky-top bg-light navbar-light justify-content-center'>
-        <ul id='tabs_panel' class='navbar-nav'>
+    <nav class='navbar navbar-expand-sm sticky-top bg-light navbar-light justify-content-center' id='global_nav'>
+        <ul id='tabs_panel' class='navbar-nav nav ' role='tablists'>
 
         </ul>
-
     </nav>
 
+    <div id='about'><br></div>
+    <div class="jumbotron">
+        <p class="lead" id='summary_text'></p>
+      </div>
 
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style='width: 60vw; margin: auto' data-interval='3000'>
+    <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style='width: 60vw; margin: auto' data-interval='3000'>
         <ol class="carousel-indicators">
             <li data-target='#carouselExampleIndicators' data-slide-to='0' class='active'></li>
             <li data-target='#carouselExampleIndicators' data-slide-to='1'></li>
@@ -180,11 +358,22 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-    </div>
+    </div> -->
 
 
+    <div id='works'><br></div>
     <div class='container' id='cards_section'>
         
     </div>
+
+    <nav class='navbar navbar-expand-sm bg-dark navbar-dark justify-content-center'>
+        <ul id='contact_panel' class='navbar-nav mr-auto'>
+            
+        </ul>
+        <ul id='social_panel' class='navbar-nav ml-auto'>
+            
+        </ul>
+        
+    </nav>
 
 </body>
