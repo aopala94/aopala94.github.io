@@ -145,6 +145,9 @@
                 padding-top: 10vh;
             }
         }
+        .no-border {
+            border: none;
+        }
     </style>
     <script id='contents' src='contents' type='application/json'></script>
     <script type='text/javascript'>
@@ -329,7 +332,11 @@
             // window.addEventListener('wheel', toggleCol);
             // window.addEventListener('touchmove', toggleCol);
             window.addEventListener('resize', getJSON);
+            $('#flyTab').empty().html(tabs[0]);
             window.addEventListener('scroll', animateVisible);
+            $(window).on('activate.bs.scrollspy', function (e,obj) {
+                $('#flyTab').empty().html(tabs[links.indexOf(obj.relatedTarget.substring(1))]);
+            });
         }
     </script>
 </head>
@@ -346,10 +353,18 @@
         </div>
     </div>
 
-    <nav class='navbar navbar-expand-sm sticky-top bg-light navbar-light justify-content-center' id='global_nav'>
-        <ul id='tabs_panel' class='navbar-nav nav ' role='tablists'>
+    <nav class='navbar navbar-expand-sm sticky-top bg-light navbar-light' id='global_nav'>
+        <div class="navbar-toggler w-100 no-border" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon pull-left"></span>
+            <div class='navbar-brand pull-right' id='flyTab'>
+    
+            </div>
+        </div>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+            <ul id='tabs_panel' class='navbar-nav nav' role='tablists'>
 
-        </ul>
+            </ul>
+        </div>
     </nav>
 
     <div id='about'><br></div>
