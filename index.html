@@ -149,6 +149,9 @@
         .no-border {
             border: none;
         }
+        .work_card_p {
+            text-align: justify;
+        }
     </style>
     <script id='contents' src='contents' type='application/json'></script>
     <script type='text/javascript'>
@@ -278,7 +281,7 @@
 
                 let text = document.createElement('div');   //  text container
                 text.className = aspect_ratio < lim? 'w-100' :'col-8';
-                text.innerHTML = '<h2 class=\'work_card_h\'>' + name + '</h2><br><p>' + desc + '</p>';
+                text.innerHTML = '<h2 class=\'work_card_h\'>' + name + '</h2><br><p class=\'work_card_p\'>' + desc + '</p>';
                 if(i%2 == 0) {
                     card.className += ' card_left';
                     card.appendChild(pic);
